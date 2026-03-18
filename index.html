@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Web Project</title>
+    <style>
+        /* CSS styling yahan hai */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+        }
+        
+        .container {
+            background-color: #1e1e1e;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.6);
+            text-align: center;
+            width: 90%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #00ffcc;
+            margin-bottom: 10px;
+        }
+
+        input {
+            width: calc(100% - 24px);
+            padding: 12px;
+            margin: 15px 0;
+            border-radius: 6px;
+            border: 1px solid #333;
+            background-color: #2c2c2c;
+            color: white;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #00ffcc;
+        }
+
+        button {
+            background-color: #00ffcc;
+            color: #000;
+            font-weight: bold;
+            font-size: 16px;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        button:hover {
+            background-color: #00b38f;
+            transform: scale(1.05);
+        }
+
+        #output {
+            margin-top: 25px;
+            padding: 15px;
+            background-color: #2c2c2c;
+            border-left: 4px solid #00ffcc;
+            border-radius: 4px;
+            min-height: 40px;
+            font-size: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>System Ready</h1>
+        <p>Apna command ya text niche type karein:</p>
+        
+        <input type="text" id="userInput" placeholder="Yahan type karein..." autocomplete="off">
+        <button id="actionBtn">Submit</button>
+        
+        <div id="output">Output yahan show hoga...</div>
+    </div>
+
+    <script>
+        // Pure Vanilla JavaScript (No imports, no build syntax)
+        document.addEventListener("DOMContentLoaded", () => {
+            const btn = document.getElementById("actionBtn");
+            const input = document.getElementById("userInput");
+            const output = document.getElementById("output");
+
+            // Button click event
+            btn.addEventListener("click", () => {
+                processInput();
+            });
+
+            // Enter key press event
+            input.addEventListener("keypress", (event) => {
+                if (event.key === "Enter") {
+                    processInput();
+                }
+            });
+
+            // Input process karne ka logic
+            function processInput() {
+                const text = input.value.trim();
+                
+                if (text !== "") {
+                    output.innerHTML = `<strong>Aapne likha:</strong> ${text}`;
+                    output.style.color = "#ffffff";
+                    input.value = ""; // Input box clear karne ke liye
+                } else {
+                    output.textContent = "Bhai, pehle kuch type toh kar lo!";
+                    output.style.color = "#ff4d4d";
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>
